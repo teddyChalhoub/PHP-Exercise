@@ -12,4 +12,7 @@ foreach ($arrays as $key => $array){
         echo "<br>";
     }
 }
+
+krsort($arrays);
+
 ?>

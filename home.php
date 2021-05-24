@@ -128,17 +128,19 @@ session_start();
                 <button class="box form-2-btn" type="submit" name="login_btn" value="login">Login</button>
             </div>
         </form>
-        <div class="value-display">
 
-            <?php if (isset($_POST["username"])) : ?>
-                <?php foreach ($_SESSION["values"] as $key => $value) : ?>
 
-                    <p><?php echo "$key => $value" ?></p></br>
+        <?php if (isset($_POST["register_btn"])) {
+            if ($_POST["password"] == $_POST["confirmPassword"]) {
+                foreach ($_SESSION["values"] as $key => $value) {
 
-                <?php endforeach; ?>
-            <?php endif; ?>
+                    echo "<div class='value-display'>";
+                    echo "<p> $key => $value </p><br>";
+                    echo "</div>";
+                }
+            }
+        } ?>
 
-        </div>
+    </div>
 </body>
-
 </html>
