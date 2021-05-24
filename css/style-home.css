@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #a3d7e4;
+}
+
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 80%;
+  margin: auto;
+}
+
+.form-2 {
+  display: block;
+  background-color: #1E98D7;
+  padding: 2rem 0 2rem 2rem;
+  margin-top: 5.12rem;
+}
+
+.form-2 .box{
+  margin-top: 1rem;
+}
+
+.form-1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 40%));
+  column-gap: 0;
+  gap: 2rem;
+  background-color: #1E98D7;
+  padding: 2rem;
+  margin-right: 0.5rem;
+}
+
+h3 {
+  text-align: center;
+  color: #2784c7;
+}
+
+#login{
+    grid-row: 1/2;
+    grid-column: 2/3;
+}
+
+.description {
+  width: 91%;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #1E98D7;
+  color: #acdee9;
+}
+
+.form-1-btn,
+.form-2-btn {
+  width: 8rem;
+  height: 3rem;
+  border: 0;
+  background-color: #26abd9;
+  color: #fff;
+  align-self: flex-start;
+}
+
+label {
+  color: #acdee9;
+  font-size: small;
+}
+
+input {
+  font-size: 1rem;
+  padding:0.25rem;
+  width: 90%;
+  border: none;
+  border-bottom: 0.1rem #acdee9 solid;
+  background-color: #1E98D7;
+  outline: none;
+  color: #acdee9;
+}
+
+input:focus {
+  background-color: #a7e0e9;
+  color: #1E98D7;
+}
+
+.toggle-to-signIn-page {
+  grid-row: 6/7;
+  grid-column: 1/3;
+  color: #acdee9;
+}
+
+.toggle-to-signIn-page a {
+  text-decoration: none;
+  color: #acdee9;
+}
+
+.form-2-btn,.log-pass,.log-username{
+    margin-top: 1rem;
+}
+
+.value-display{
+    width:91%;
+  background-color: #1E98D7;
+  color: #a7e0e9;
+  margin: 1rem 0 1rem 0;
+  padding: 1rem 1rem 0 1rem;
+
+}
+
+.error-pass{
+    color: red;
+    padding:1rem 1rem 1rem 0;
+}
+
+@media (max-width: 986px) {
+  body {
+    display: block;
+  }
+  .wrapper{
+      display: block;
+  }
+
+  .form-1 {
+    display: block;
+  }
+
+  .form-2 {
+    display: block;
+  }
+
+  .box {
+    margin-top: 1rem;
+  }
+}
