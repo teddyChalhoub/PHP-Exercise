@@ -13,13 +13,13 @@ if ($_POST['yearly/monthly'] == 'yearly') {
     $yearlySalary = $_SESSION["userInput"]['salary'];
     $yearlyTax = round(taxcalculation($yearlySalary));
     $yearlySocialSecurityFee = round(socialSecurityFee($yearlySalary));
-    $yearlySalaryAfterTax = round(salaryAfterTax($yearlySalary, $userinput["taxFreeAllowance"]));
+    $yearlySalaryAfterTax = round(salaryAfterTax($yearlySalary, $_SESSION['userInput']["taxFreeAllowance"]));
 } else {
 
     $monthlySalary = $_SESSION["userInput"]['salary'];
     $monthlyTax = round(taxcalculation($monthlySalary));
     $monthlySocialSecurityFee = round(socialSecurityFee($monthlySalary));
-    $monthlySalaryAfterTax = round(salaryAfterTax($monthlySalary, $userinput["taxFreeAllowance"]));
+    $monthlySalaryAfterTax = round(salaryAfterTax($monthlySalary, $_SESSION['userInput']["taxFreeAllowance"]));
 }
 
 function taxcalculation($num)
@@ -61,48 +61,60 @@ session_destroy();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/incomeTaxCalculator.css">
+    <title>Income Tax Calculator</title>
 </head>
 
 <body>
+    <h3>Income Tax Calculator</h3>
+    <div class="wrapper">
+        <form action="incomeTaxCalculator.php" method="POST">
 
-    <form action="incomeTaxCalculator.php" method="POST">
+            <div class="form">
+                <div class="box">
+                    <label for="salary">Salary:</label><br>
+                    <input id="salary" type="number" name="salary" required value=<?php echo $_SESSION["userInput"]["salary"]; ?>><br><br>
+                </div>
+                <div class="box">
+                    <label for="taxFreeAllowance">Tax Free Allowance in USD:</label><br>
+                    <input id="taxFreeAllowance" type="number" name="taxFreeAllowance" required value=<?php echo $_SESSION["userInput"]["taxFreeAllowance"]; ?>><br><br>
+                </div>
 
-        <label for="salary">Salary:</label>
-        <input id="salary" type="text" name="salary" value=<?php echo $_SESSION["userInput"]["salary"]; ?> required><br><br>
+                <div class="radio-btn">
 
-        <?php if ($_SESSION["userInput"]["yearly/monthly"] == "yearly") :
-        ?>
-            <input id="yearly" type="radio" name="yearly/monthly" value="yearly" checked required>
-            <label for="yearly">Yearly</label><br><br>
+                    <?php
 
-            <input id="monthly" type="radio" name="yearly/monthly" value="monthly">
-            <label for="monthly">Monthly</label><br><br>
+                    if ($_SESSION["userInput"]["yearly/monthly"] == "yearly") {
+                        
+                        echo "<input id='monthly' type='radio' name='yearly/monthly' value='monthly'>
+                        <label for='monthly'>Monthly</label>";
 
-        <?php else : ?>
+                        echo "<input id='yearly' type='radio' name='yearly/monthly' value='yearly' checked required>
+                        <label for='yearly'>Yearly</label><br><br>";
+                    } else {
 
-            <input id="yearly" type="radio" name="yearly/monthly" value="yearly" required>
-            <label for="yearly">Yearly</label><br><br>
+                        echo "<input id='monthly' type='radio' name='yearly/monthly' value='monthly' checked>
+                        <label for='monthly'>Monthly</label>";
 
-            <input id="monthly" type="radio" name="yearly/monthly" value="monthly" checked>
-            <label for="monthly">Monthly</label><br><br>
-        <?php endif; ?>
+                        echo "<input id='yearly' type='radio' name='yearly/monthly' value='yearly' required>
+                        <label for='yearly'>Yearly</label><br><br>";
+                    }
+                    ?>
+                </div>
+                <button type="submit" name="calculate-btn">submit</button>
 
-        <label for="taxFreeAllowance">Tax Free Allowance in USD:</label>
-        <input id="taxFreeAllowance" type="text" name="taxFreeAllowance" value=<?php echo $_SESSION["userInput"]["taxFreeAllowance"]; ?> required><br><br>
+            </div>
 
-        <button type="submit">submit</button>
+        </form>
 
-    </form>
-
-    <br><br>
-
-    <table style="width: 100%; border-collapse:collapse;">
+        <br><br>
+    </div>
+    <table>
         <thead>
-            <tr style="text-align: left; border-spacing:0;">
-                <th style="border-bottom: 0.1rem black solid;"></th>
-                <th style="border-bottom: 0.1rem black solid;">Yearly</th>
-                <th style="border-bottom: 0.1rem black solid;">Monthly</th>
+            <tr>
+                <th></th>
+                <th>Yearly</th>
+                <th>Monthly</th>
             </tr>
         </thead>
 

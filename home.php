@@ -32,7 +32,6 @@ session_start();
                 if (isset($_POST["register_btn"])) {
                     if ($_POST["password"] == $_POST["confirmPassword"]) {
 
-
                         $validation = array("name" => $_POST["name"], "username" => $_POST["username"], "password" => $_POST["password"], "email" => $_POST["email"], "phone" => $_POST["phone"], "dateOfBirth" => $_POST["dateOfBirth"], "socialSecurityNumber" => $_POST["socialSecurityNumber"]);
 
                         $_SESSION["values"] = $validation;
@@ -132,15 +131,17 @@ session_start();
 
         <?php if (isset($_POST["register_btn"])) {
             if ($_POST["password"] == $_POST["confirmPassword"]) {
+                echo "<div class='value-display'>";
+                echo "<p> key => value </p><br>";
                 foreach ($_SESSION["values"] as $key => $value) {
 
-                    echo "<div class='value-display'>";
                     echo "<p> $key => $value </p><br>";
-                    echo "</div>";
                 }
+                echo "</div>";
             }
         } ?>
 
     </div>
 </body>
+
 </html>
