@@ -47,7 +47,7 @@ session_start();
 
             </div>
 
-            <div id="register" class="form-1">
+            <div class="form-1">
                 <div class="name box">
                     <label for="name">Full name</label><br>
                     <input id="name" type="text" name="name" required>

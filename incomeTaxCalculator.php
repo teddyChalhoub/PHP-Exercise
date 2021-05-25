@@ -67,16 +67,22 @@ session_destroy();
 
 <body>
     <h3>Income Tax Calculator</h3>
+    <div class="list">
+        <ul>
+            <li>All information are required.</li>
+            <li>Provide all amounts in USD.</li>
+        </ul>
+    </div>
     <div class="wrapper">
         <form action="incomeTaxCalculator.php" method="POST">
 
             <div class="form">
                 <div class="box">
-                    <label for="salary">Salary:</label><br>
+                    <label for="salary">Salary</label><br>
                     <input id="salary" type="number" name="salary" required value=<?php echo $_SESSION["userInput"]["salary"]; ?>><br><br>
                 </div>
                 <div class="box">
-                    <label for="taxFreeAllowance">Tax Free Allowance in USD:</label><br>
+                    <label for="taxFreeAllowance">Tax Free Allowance </label><br>
                     <input id="taxFreeAllowance" type="number" name="taxFreeAllowance" required value=<?php echo $_SESSION["userInput"]["taxFreeAllowance"]; ?>><br><br>
                 </div>
 
