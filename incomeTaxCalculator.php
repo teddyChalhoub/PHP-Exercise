@@ -4,8 +4,6 @@ session_start();
 
 $userInput = ["salary" => $_POST["salary"], "yearly/monthly" => $_POST['yearly/monthly'], "taxFreeAllowance" => $_POST["taxFreeAllowance"]];
 
-
-
 $_SESSION["userInput"] = $userInput;
 
 if ($_POST['yearly/monthly'] == 'yearly') {
@@ -51,6 +49,16 @@ function salaryAfterTax($num2, $taxFreeAllowance)
     return $salaryAfterTax;
 }
 
+function requiredFields()
+{
+    if ($_POST["salary"] != null && $_POST['yearly/monthly'] != null && $_POST["taxFreeAllowance"] != null) {
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
 session_destroy();
 ?>
 
@@ -79,11 +87,11 @@ session_destroy();
             <div class="form">
                 <div class="box">
                     <label for="salary">Salary</label><br>
-                    <input id="salary" type="number" name="salary" required value=<?php echo $_SESSION["userInput"]["salary"]; ?>><br><br>
+                    <input id="salary" type="number" name="salary" value=<?php echo $_SESSION["userInput"]["salary"]; ?>><br><br>
                 </div>
                 <div class="box">
                     <label for="taxFreeAllowance">Tax Free Allowance </label><br>
-                    <input id="taxFreeAllowance" type="number" name="taxFreeAllowance" required value=<?php echo $_SESSION["userInput"]["taxFreeAllowance"]; ?>><br><br>
+                    <input id="taxFreeAllowance" type="number" name="taxFreeAllowance" value=<?php echo $_SESSION["userInput"]["taxFreeAllowance"]; ?>><br><br>
                 </div>
 
                 <div class="radio-btn">
@@ -95,14 +103,14 @@ session_destroy();
                         echo "<input id='monthly' type='radio' name='yearly/monthly' value='monthly'>
                         <label for='monthly'>Monthly</label>";
 
-                        echo "<input id='yearly' type='radio' name='yearly/monthly' value='yearly' checked required>
+                        echo "<input id='yearly' type='radio' name='yearly/monthly' value='yearly' checked >
                         <label for='yearly'>Yearly</label><br><br>";
                     } else {
 
                         echo "<input id='monthly' type='radio' name='yearly/monthly' value='monthly' checked>
                         <label for='monthly'>Monthly</label>";
 
-                        echo "<input id='yearly' type='radio' name='yearly/monthly' value='yearly' required>
+                        echo "<input id='yearly' type='radio' name='yearly/monthly' value='yearly' >
                         <label for='yearly'>Yearly</label><br><br>";
                     }
                     ?>
@@ -115,59 +123,65 @@ session_destroy();
 
         <br><br>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>Yearly</th>
-                <th>Monthly</th>
-            </tr>
-        </thead>
 
-        <tbody>
+    <?php if (isset($_POST["calculate-btn"])) : ?>
+        <?php if (requiredFields()) : ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Yearly</th>
+                        <th>Monthly</th>
+                    </tr>
+                </thead>
 
-            <tr>
-                <td>Total salary</td>
-                <?php
-                if (isset($_POST['calculate-btn'])) {
-                    echo "<td class='background-table'>$yearlySalary</td>";
-                    echo "<td class='background-table'>$monthlySalary</td>";
-                }
-                ?>
+                <tbody>
 
-            </tr>
-            <tr>
-                <td>Tax amount</td>
-                <?php
-                if (isset($_POST['calculate-btn'])) {
-                    echo "<td>$yearlyTax</td>";
-                    echo "<td>$monthlyTax</td>";
-                }
-                ?>
+                    <tr>
+                        <td>Total salary</td>
+                        <?php
+                        if (isset($_POST['calculate-btn'])) {
+                            echo "<td class='background-table'>$yearlySalary</td>";
+                            echo "<td class='background-table'>$monthlySalary</td>";
+                        }
+                        ?>
 
-            </tr>
-            <tr>
-                <td>Social security fee</td>
-                <?php
-                if (isset($_POST['calculate-btn'])) {
-                    echo "<td class='background-table'>$yearlySocialSecurityFee</td>";
-                    echo "<td class='background-table'>$monthlySocialSecurityFee</td>";
-                }
-                ?>
+                    </tr>
+                    <tr>
+                        <td>Tax amount</td>
+                        <?php
+                        if (isset($_POST['calculate-btn'])) {
+                            echo "<td>$yearlyTax</td>";
+                            echo "<td>$monthlyTax</td>";
+                        }
+                        ?>
 
-            </tr>
-            <tr>
-                <td>Salary after tax</td>
-                <?php
-                if (isset($_POST['calculate-btn'])) {
-                    echo "<td>$yearlySalaryAfterTax</td>";
-                    echo "<td>$monthlySalaryAfterTax</td>";
-                }
-                ?>
-            </tr>
-        </tbody>
-    </table>
+                    </tr>
+                    <tr>
+                        <td>Social security fee</td>
+                        <?php
+                        if (isset($_POST['calculate-btn'])) {
+                            echo "<td class='background-table'>$yearlySocialSecurityFee</td>";
+                            echo "<td class='background-table'>$monthlySocialSecurityFee</td>";
+                        }
+                        ?>
 
+                    </tr>
+                    <tr>
+                        <td>Salary after tax</td>
+                        <?php
+                        if (isset($_POST['calculate-btn'])) {
+                            echo "<td>$yearlySalaryAfterTax</td>";
+                            echo "<td>$monthlySalaryAfterTax</td>";
+                        }
+                        ?>
+                    </tr>
+                </tbody>
+            </table>
+        <?php else : ?>
+            <p class="error">Some fields are missing</p>
+        <?php endif; ?>
+    <?php endif; ?>
 </body>
 
 </html>

@@ -11,3 +11,24 @@ body {
   display: flex;
   justify-content: center;
 }
+
+table {
+  width: 40%;
+  margin: 10% auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th {
+  border-bottom: 0.1rem #66452a solid;
+}
+
+tr {
+  text-align: left;
+}
+
+th,
+td {
+  color: #66452a;
+  padding: 0.5rem;
+}

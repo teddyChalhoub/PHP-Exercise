@@ -61,3 +61,7 @@ img {
   align-items: center;
   margin: 3rem;
 }
+
+.error {
+  color: red;
+}

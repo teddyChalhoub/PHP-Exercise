@@ -16,6 +16,16 @@ function palindromeCheck($string)
     }
 }
 
+function requiredFields()
+{
+    if ($_POST["string"] != null) {
+
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,11 +54,13 @@ function palindromeCheck($string)
 
 
         <?php
-
-        if (isset($_POST["string"])) {
-            palindromeCheck($_POST["string"]);
+        if (requiredFields()) {
+            if (isset($_POST["string"])) {
+                palindromeCheck($_POST["string"]);
+            }
+        } else {
+            echo "<p class='error'>Provide a string value</p>";
         }
-
         ?>
     </div>
 </body>

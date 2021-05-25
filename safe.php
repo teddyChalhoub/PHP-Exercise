@@ -13,14 +13,33 @@
 
     <div class="wrapper">
         <?php
-
-        session_destroy();
-        if ($_GET["message"] == "Login Successful") {
-
-            echo "<img src='./img/loginSuccess.png' alt='Login Successful'>";
-        }
-
+        session_start();
         ?>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php
+                echo "<div class='value-display'>";
+                foreach ($_SESSION["values"] as $key => $value) {
+                    echo "<tr>";
+                    echo "<td>$key</td>";
+                    echo "<td>$value</td>";
+                    echo "</tr>";
+                }
+                echo "</div>";
+                session_destroy();
+                ?>
+            </tbody>
+        </table>
+
+
 
     </div>
 
