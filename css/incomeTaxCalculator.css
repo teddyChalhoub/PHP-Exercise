@@ -13,7 +13,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
 }
 
 .list,
@@ -25,12 +24,16 @@ input,
 label {
   color: #66452a;
 }
-.wrapper,input{
+.wrapper,
+input {
   background-color: #cbb19b;
-
 }
-h3 ,.list{
-  margin-bottom: 1rem;
+h3 {
+  margin: 1rem;
+}
+
+.list {
+  margin: 0 0 1rem 1rem;
 }
 
 .wrapper {
@@ -76,6 +79,10 @@ tr {
 
 tbody tr:first-child,
 tr:nth-child(3) {
+  background-color: #ddbda4;
+}
+
+.background-table {
   background-color: #ddbda4;
 }
 

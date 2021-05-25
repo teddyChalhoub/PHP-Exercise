@@ -4,10 +4,9 @@ function printArray($arrays)
 {
     foreach ($arrays as $key => $array) {
         echo "<p>" . strtoupper($key) . "</p>";
-     
+
         foreach ($array as $key2 => $value) {
             echo "<p>----> $key2 = $value</p>";
-          
         }
     }
 }

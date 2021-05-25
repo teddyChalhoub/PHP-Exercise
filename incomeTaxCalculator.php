@@ -91,7 +91,7 @@ session_destroy();
                     <?php
 
                     if ($_SESSION["userInput"]["yearly/monthly"] == "yearly") {
-                        
+
                         echo "<input id='monthly' type='radio' name='yearly/monthly' value='monthly'>
                         <label for='monthly'>Monthly</label>";
 
@@ -128,28 +128,42 @@ session_destroy();
 
             <tr>
                 <td>Total salary</td>
-                <td><?php echo $yearlySalary; ?></td>
-                <td><?php echo $monthlySalary; ?></td>
+                <?php
+                if (isset($_POST['calculate-btn'])) {
+                    echo "<td class='background-table'>$yearlySalary</td>";
+                    echo "<td class='background-table'>$monthlySalary</td>";
+                }
+                ?>
 
             </tr>
             <tr>
                 <td>Tax amount</td>
-                <td><?php echo $yearlyTax; ?></td>
-                <td><?php echo $monthlyTax; ?></td>
+                <?php
+                if (isset($_POST['calculate-btn'])) {
+                    echo "<td>$yearlyTax</td>";
+                    echo "<td>$monthlyTax</td>";
+                }
+                ?>
 
             </tr>
             <tr>
                 <td>Social security fee</td>
-                <td><?php echo $yearlySocialSecurityFee; ?></td>
-                <td><?php echo $monthlySocialSecurityFee; ?></td>
+                <?php
+                if (isset($_POST['calculate-btn'])) {
+                    echo "<td class='background-table'>$yearlySocialSecurityFee</td>";
+                    echo "<td class='background-table'>$monthlySocialSecurityFee</td>";
+                }
+                ?>
 
             </tr>
             <tr>
                 <td>Salary after tax</td>
-                <td><?php echo $yearlySalaryAfterTax; ?></td>
-                <td><?php echo $monthlySalaryAfterTax; ?></td>
-
-
+                <?php
+                if (isset($_POST['calculate-btn'])) {
+                    echo "<td>$yearlySalaryAfterTax</td>";
+                    echo "<td>$monthlySalaryAfterTax</td>";
+                }
+                ?>
             </tr>
         </tbody>
     </table>
