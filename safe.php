@@ -12,6 +12,8 @@
 <body>
 
     <div class="wrapper">
+
+        <h3>Login Successful</h3>
         <?php
         session_start();
         ?>

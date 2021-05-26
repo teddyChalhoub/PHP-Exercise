@@ -9,12 +9,19 @@ body {
 
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.wrapper h3{
+  color: #66452a;
+  margin-top: 2%;
 }
 
 table {
   width: 40%;
-  margin: 10% auto;
+  margin: 8% auto;
   border-collapse: collapse;
   text-align: center;
 }
