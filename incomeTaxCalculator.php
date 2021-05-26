@@ -116,7 +116,7 @@ session_destroy();
                     }
                     ?>
                 </div>
-                <button type="submit" name="calculate-btn">submit</button>
+                <button type="submit" name="calculate-btn">Calculate</button>
 
             </div>
 
