@@ -14,10 +14,11 @@ if ($_POST['yearly/monthly'] == 'yearly') {
     $yearlySalaryAfterTax = round(salaryAfterTax($yearlySalary, $_SESSION['userInput']["taxFreeAllowance"]));
 } else {
 
+    $monthlytaxFreeAllowance = $_SESSION['userInput']["taxFreeAllowance"]/12;
     $monthlySalary = $_SESSION["userInput"]['salary'];
     $monthlyTax = round(taxcalculation($monthlySalary));
     $monthlySocialSecurityFee = round(socialSecurityFee($monthlySalary));
-    $monthlySalaryAfterTax = round(salaryAfterTax($monthlySalary, $_SESSION['userInput']["taxFreeAllowance"]));
+    $monthlySalaryAfterTax = round(salaryAfterTax($monthlySalary, $monthlytaxFreeAllowance));
 }
 
 function taxcalculation($num)
